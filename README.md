@@ -15,16 +15,19 @@ You can git clone https://github.com/sifive/freedom under this directory and com
 ## Convert DCache Module to smt2 formula
 `yosys dcache.ys`
 
-* The data_array and tag_array are definded as |DCache_n tag_array_0[i]|, i=0,1,2, ...
+* The array is unrolled due to the command "memory". (e.g., tag_array_0 are definded as \|DCache_n tag_array_0[i]\|, i=0,1,2, ..., 63)
 * The initialization is defined by a function called DCache_i (state)
 * The state transition is defined by a function called DCache_t (state, next_state)
-* The variable used in submodule is defined in format of |DCache_n submodule.variable|
-* Not all variables are defined in the formula.
+* The variable used in submodule is defined in format of \|DCache_n submodule.variable\| (e.g.  \|DCache_n data.data_arrays_0_3[223]\|)
 
 ## Convert IBuf Module to smt2 formula (a shorter smt2 file)
 `yosys ibuf.ys`
 
+## Others
+If your target module is others, you can replace DCache with RocketTile in *dcache.ys*
+I also provided the rocketTile.smt2 in this repos
+
 ## generate logical formula for multi-cycle execution
 `yosys-smtbmc -t $2  --dump-smt2 $1-$2.smt2 $1.smt2`
+dcache-20.smt2 is the formula corresponding to 20 cycles. s0 -> initial state, s1, s2, ..., s19
 
-If you use original yosys code, this command will call a solver to solve the formula. I modified its code to skip the solving and avoid the unnecessary assertions. 
