@@ -1,14 +1,14 @@
 # verilog2smtExample
 
 ## setup 
-### generate verilog code of rocket-chip 
+### Generate the verilog code 
 * I used the code at [https://github.com/sifive/freedom]. 
 You can git clone https://github.com/sifive/freedom under this directory and compile the verilog code using Makefile.vcu118-u500devkit
 
-### install yosys [http://www.clifford.at/yosys/download.html]
+### Install yosys [http://www.clifford.at/yosys/download.html]
 
 ## Files in the repository
-* *.v: the verilog code including the DCache and IBuf modules
+* sifive.freedom.unleashed.DevKitU500FPGADesign_WithDevKit50MHz.v: the verilog code including the DCache and IBuf modules
 * *.smt2: smt2 formula generated from yosys-0.8 using the verilog code 
 * *.ys: the yosys script used to generate smt2 formula
 
