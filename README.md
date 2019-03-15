@@ -25,7 +25,6 @@ You can git clone https://github.com/sifive/freedom under this directory and com
 
 ## Others
 If your target module is others, you can replace DCache with RocketTile in *dcache.ys*
-I also provided the rocketTile.smt2 in this repos
 
 ## generate logical formula for multi-cycle execution
 `yosys-smtbmc -t $2  --dump-smt2 $1-$2.smt2 $1.smt2`
