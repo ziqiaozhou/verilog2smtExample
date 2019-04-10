@@ -1,0 +1,19 @@
+read_verilog test.v
+prep -flatten -top Test 
+write_smt2  -stbv -wires test-noexpose.smt2
+
+# expose some registers => the logic outputting them will be modeled
+cd Test
+expose a
+expose b
+expose c
+cd ..
+#hierarchy -check -top Test 
+#prep -top  Test
+#memory
+#proc 
+prep -flatten -top Test 
+write_smt2  -stbv -wires test-nomem.smt2
+memory
+prep -flatten -top Test 
+write_smt2  -stbv -wires test-mem.smt2
