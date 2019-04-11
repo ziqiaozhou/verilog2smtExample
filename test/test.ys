@@ -6,6 +6,7 @@ expose b
 expose c
 cd ..
 
+
 #conservative RTL synthesis
 prep
 # convert to multiplexers and registers
