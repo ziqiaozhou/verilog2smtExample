@@ -26,9 +26,15 @@ module Mem(clk,rst,addr,in_data,out_data,wmode);
   reg[31:0] ram[7:0];
   integer i;
   initial begin
-    for(i=0;i<8;i=i+1)
-      ram[i] = {32'h0};
+	  `ifdef SIM
+		  for(i=0;i<8;i=i+1)
+			  ram[i] = {32'h0};
+
+	  `else
+		  $readmemh("test.hex",ram);
+	  `endif
   end
+
   always @(posedge clk)
      if(wmode==1'b1) ram[addr] <= in_data;
   assign out_data = ram[addr];

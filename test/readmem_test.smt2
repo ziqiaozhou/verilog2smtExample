@@ -137,7 +137,7 @@
 (define-fun |Test_n wmode| ((state |Test_s|)) Bool (|Test#26| state))
 (define-fun |Test#29| ((state |Test_s|)) (_ BitVec 1) (bvand ((_ extract 1 1) (|Test#2| state)) ((_ extract 2 2) (|Test#2| state)))) ; $techmap\mem.$auto$rtlil.cc:1710:And$178
 (define-fun |Test#30| ((state |Test_s|)) (_ BitVec 1) (bvand ((_ extract 0 0) (|Test#2| state)) (|Test#29| state))) ; $techmap\mem.$auto$rtlil.cc:1710:And$186
-(define-fun |Test#31| ((state |Test_s|)) (_ BitVec 1) (ite (|Test#26| state) #b1 #b0)) ; $techmap\mem.$0$memwr$\ram$test.v:39$8_EN[31:0]$12 [31]
+(define-fun |Test#31| ((state |Test_s|)) (_ BitVec 1) (ite (|Test#26| state) #b1 #b0)) ; $techmap\mem.$0$memwr$\ram$readmem_test.v:39$8_EN[31:0]$12 [31]
 (define-fun |Test#32| ((state |Test_s|)) (_ BitVec 1) (bvand (|Test#30| state) (|Test#31| state))) ; $techmap\mem.$memory\ram$wren[7][0][0]$y$188
 (define-fun |Test#33| ((state |Test_s|)) (_ BitVec 32) (ite (= ((_ extract 0 0) (|Test#32| state)) #b1) (concat #b0000000000000000000000000000000 (|Test#10| state)) (|Test#22| state))) ; $techmap\mem.$memory\ram$wrmux[7][0][0]$y$190
 (define-fun |Test#34| ((state |Test_s|)) (_ BitVec 1) (bvnot ((_ extract 0 0) (|Test#2| state)))) ; $techmap\mem.$auto$rtlil.cc:1722:Eq$124
@@ -167,16 +167,16 @@
 (define-fun |Test#58| ((state |Test_s|)) (_ BitVec 1) (bvand (|Test#34| state) (|Test#54| state))) ; $techmap\mem.$auto$rtlil.cc:1710:And$132
 (define-fun |Test#59| ((state |Test_s|)) (_ BitVec 1) (bvand (|Test#58| state) (|Test#31| state))) ; $techmap\mem.$memory\ram$wren[0][0][0]$y$134
 (define-fun |Test#60| ((state |Test_s|)) (_ BitVec 32) (ite (= ((_ extract 0 0) (|Test#59| state)) #b1) (concat #b0000000000000000000000000000000 (|Test#10| state)) (|Test#11| state))) ; $techmap\mem.$memory\ram$wrmux[0][0][0]$y$136
-(define-fun |Test#61| ((state |Test_s|)) Bool (bvugt (|Test#8| state) #b011)) ; $gt$test.v:64$21_Y
+(define-fun |Test#61| ((state |Test_s|)) Bool (bvugt (|Test#8| state) #b011)) ; $gt$readmem_test.v:64$21_Y
 (define-fun |Test#62| ((state |Test_s|)) (_ BitVec 1) (ite (|Test#61| state) ((_ extract 0 0) (|Test#5| state)) (|Test#10| state))) ; $procmux$43_Y
-(define-fun |Test#63| ((state |Test_s|)) Bool (= (|Test#8| state) #b001)) ; $eq$test.v:60$20_Y
+(define-fun |Test#63| ((state |Test_s|)) Bool (= (|Test#8| state) #b001)) ; $eq$readmem_test.v:60$20_Y
 (define-fun |Test#64| ((state |Test_s|)) (_ BitVec 1) (ite (|Test#63| state) (|Test#10| state) (|Test#62| state))) ; $procmux$46_Y
-(define-fun |Test#65| ((state |Test_s|)) Bool (not (or  (= ((_ extract 0 0) (|Test#8| state)) #b1) (= ((_ extract 1 1) (|Test#8| state)) #b1) (= ((_ extract 2 2) (|Test#8| state)) #b1)))) ; $eq$test.v:56$19_Y
+(define-fun |Test#65| ((state |Test_s|)) Bool (not (or  (= ((_ extract 0 0) (|Test#8| state)) #b1) (= ((_ extract 1 1) (|Test#8| state)) #b1) (= ((_ extract 2 2) (|Test#8| state)) #b1)))) ; $eq$readmem_test.v:56$19_Y
 (define-fun |Test#66| ((state |Test_s|)) (_ BitVec 1) (ite (|Test#65| state) (|Test#10| state) (|Test#64| state))) ; $0\in_data[0:0]
-(define-fun |Test#67| ((state |Test_s|)) (_ BitVec 3) (bvadd (|Test#8| state) #b001)) ; $techmap\counter.$add$test.v:18$7_Y
+(define-fun |Test#67| ((state |Test_s|)) (_ BitVec 3) (bvadd (|Test#8| state) #b001)) ; $techmap\counter.$add$readmem_test.v:18$7_Y
 (define-fun |Test#68| ((state |Test_s|)) (_ BitVec 3) (ite (|Test#9| state) #b000 (|Test#67| state))) ; $techmap\counter.$0\count[2:0]
-(define-fun |Test#69| ((state |Test_s|)) (_ BitVec 32) (bvand (|Test#0| state) (|Test#3| state))) ; $techmap\op.$and$test.v:7$3_Y
-(define-fun |Test#70| ((state |Test_s|)) (_ BitVec 32) (bvor (|Test#0| state) (|Test#3| state))) ; $techmap\op.$or$test.v:8$5_Y
+(define-fun |Test#69| ((state |Test_s|)) (_ BitVec 32) (bvand (|Test#0| state) (|Test#3| state))) ; $techmap\op.$and$readmem_test.v:7$3_Y
+(define-fun |Test#70| ((state |Test_s|)) (_ BitVec 32) (bvor (|Test#0| state) (|Test#3| state))) ; $techmap\op.$or$readmem_test.v:8$5_Y
 (define-fun |Test#71| ((state |Test_s|)) (_ BitVec 32) (ite (|Test#27| state) (|Test#70| state) (|Test#69| state))) ; $techmap\op.$0\c[31:0]
 (define-fun |Test#72| ((state |Test_s|)) (_ BitVec 32) (ite (|Test#63| state) (concat #b0000000000000000000000000000000 (|Test#25| state)) (|Test#3| state))) ; $procmux$52_Y
 (define-fun |Test#73| ((state |Test_s|)) (_ BitVec 32) (ite (|Test#65| state) (|Test#3| state) (|Test#72| state))) ; $0\b[31:0]

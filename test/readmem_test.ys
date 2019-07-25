@@ -1,4 +1,4 @@
-read_verilog test.v
+read_verilog readmem_test.v
 # expose some registers => the logic outputting them will be modeled
 cd Test
 expose a
@@ -16,6 +16,6 @@ hierarchy -check
 memory
 # flatten the design before conservative RTL synthesis 
 prep -flatten
-write_smt2  -stbv -wires test.smt2
+write_smt2  -stbv -wires readmem_test.smt2
 
 #write_smt2  -wires test-aufbv.smt2
