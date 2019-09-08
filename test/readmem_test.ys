@@ -1,0 +1,27 @@
+read_verilog readmem_test.v
+# expose some registers => the logic outputting them will be modeled
+cd Test
+expose a
+expose b
+expose c
+expose my_count
+cd ..
+
+#conservative RTL synthesis
+prep
+# convert to multiplexers and registers
+proc
+# transformations
+hierarchy
+#Analyze memories and create circuits to implement them
+memory
+# flatten the design before conservative RTL synthesis
+prep -flatten
+sim_state -clock clk -reset rst -vcd read.vcs -n 2
+write_smt2-simplified -clock clk -stbv -wires read_simplified.smt2
+
+#write_smt2  -stbv -wires readmem_test.smt2
+#write_verilog readmem_test_simp.v
+#taint_analyzer -observe c 0 1 readmem_test.analyze
+#write_verilog readmem_test_taint.v
+#write_smt2  -stbv -wires readmem_test_taint.smt2

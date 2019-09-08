@@ -1,15 +1,8 @@
-read_verilog freedom/rocket-chip/src/main/resources/vsrc/AsyncResetReg.v
- read_verilog freedom/rocket-chip/src/main/resources/vsrc/plusarg_reader.v
-read_verilog freedom/sifive-blocks/vsrc/SRLatch.v
- read_verilog freedom/fpga-shells/xilinx/common/vsrc/PowerOnResetFPGAOnly.v 
-verilog_defines -D RANDOMIZE_MEM_INIT=1
-verilog_defines -D RANDOM=32'h0
-read_verilog freedom/builds/vc707-u500devkit/sifive.freedom.unleashed.DevKitU500FPGADesign_WithDevKit50MHz.v
-hierarchy -check -top DCache
-prep -top  DCache
-memory
+read_ilang dcache.ilang
+hierarchy
+memory_collect
 proc 
-opt -fast
-prep -flatten -top DCache
+write_taint -taint io_cpu_req_bits_addr dcache.taint
 write_smt2  -stbv -wires dcache.smt2
+write_ilang dcache.ilang
 

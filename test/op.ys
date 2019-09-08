@@ -1,14 +1,16 @@
 read_verilog test.v
-# expose some registers => the logic outputting them will be modeled
-cd Test
+cd Op
 expose a
 expose b
 expose c
+expose mode
 cd ..
-prep -top Op 
+prep -top Op
 memory
 proc
-prep -flatten -top Op 
-write_smt2  -stbv -wires op.smt2
+prep -flatten -top Op
+write_smt2-simplified -clock clk -stbv -wires op_simplified.smt2
 
-#write_smt2  -wires test-aufbv.smt2
+#write_smt2 -stbv -wires op.smt2
+#taint_analyzer -observe c 0 1 op.analyze
+#write_verilog new_op.v
